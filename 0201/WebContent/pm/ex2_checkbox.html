@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function send(f) {
+		
+		if (f.fn[0].value.trim() == "") {
+			alert("var1을 입력하세요");
+			f.fn[0].focus();
+			return;
+		}
+		
+		f.submit();
+	}
+	
+</script>
+</head>
+<body>
+
+	<h2>취미</h2>
+	<form action="../MyServlet5" method="post">
+		취미 :  <input type="checkbox" name="fn" value="음악"/>음악감상
+				<input type="checkbox" name="fn" value="영화"/>영화감상
+				<input type="checkbox" name="fn" value="독서"/>독서
+				<input type="checkbox" name="fn" value="라이딩"/>라이딩<br/>
+				
+		<input type="button" value="저장" onclick="send(this.form)">
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+
+[JSP Study]
+
+1. 톰캣 포트 설정 
+    1. 톰캣 (conf/server.xml) connector port 9090변경 
+
+2. 이클립스 환경설정
+    1. 인코딩 (workspace, css, html, jsp files) ISO 10646/Unicode(UTF-8)
+	2. 서버지정 (preferences-server-runtime Environment-add : Apache Tomcat v8.0 설정)
+	
+3. javax.servlet
+   Servlet < (abstract) GenericServlet < HttpServlet
+
+   org.springframework
+   Servlet < HttpServletBean < FrameworkServlet < DispatcherServlet
+
+4. URL과 Servlet 매핑하기
+HelloServlet 작성이 완료 되었다면, 배포서술자(DD=web.xml) 파일에 URL 매핑을 기술한다.   
+
+	<servlet>
+	   <servlet-name>hello</servlet-name>  <!-- DD 안에서 사용될 이름을 지정한다. -->
+	   <servlet-class>com.oracleclub.study.servlet.HelloServlet</servlet-class>  <!-- Servlet 클래스 이름을 기술한다. -->
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>hello</servlet-name>        <!-- Servlet 클래스의 DD안에서 정의한 이름 -->
+	   <url-pattern>/servlet/hello</url-pattern>  <!-- 클라이언트가 요청하게 될 이름. -->
+	</servlet-mapping>
+	
+	또는 @어노테이션으로 처리
+	
+	@WebServlet("/MyServlet1") 
+	public class MyServlet1 extends HttpServlet {
+
+	}
+	
+5. filter, listener, servlet
+    @WebServlet("/t2") 	
+   
+6. 서블릿에서 페이지 이동방법 두 가지
+
+	1) forward
+		RequestDispatcher rd = request.getRequestDispatcher("이동할 페이지");
+		rd.forward(request, response);
+
+		요렇게 하면 페이지 주소는 바뀌지 않고 내용만 바뀐다. 
+		페이지가 바뀌어도 reqeust는 바뀌지 않으므로 request에 attribute를 설정해서 
+		이동할 페이지로 값을 가져갈 수 있다. 
+
+	2)redirect
+		response.sendRedirect("이동할 페이지");
+		페이지 주소도 바뀌고 request도 바뀌게 되므로 reqeust의 attribute는 사용할 수 없다.
+
+   
+   
+	

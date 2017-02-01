@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function exe(f) {
+		
+		if (f.var1.value.trim() == "") {
+			alert("var1을 입력하세요");
+			f.var1.focus();
+			return;
+		}
+
+		if (f.var2.value.trim() == "") {
+			alert("var2을 입력하세요");
+			f.var2.focus();
+			return;
+		}
+		
+		f.submit();
+	}
+
+</script>
+
+</head>
+<body>
+
+	<form action="../MyServlet3" method="post">
+		v1: <input type="text" name="var1"/><br/>
+		v2: <input type="text" name="var2"/><br/>
+		<input type="button" value="보내기" onclick="exe(this.form)"/>
+	</form>
+
+</body>
+</html>
