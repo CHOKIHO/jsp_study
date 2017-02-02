@@ -351,3 +351,9 @@ Servers/Tomcat v8.0 Server at localhost-config/web.xml
 
 0201/build/
 *.class
+
+.metadata/*
+.recommenders/*
+*/.settings/*
+RemoteSystemsTempFiles/*
+

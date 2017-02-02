@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	function check_data(ff) {
+		
+		if (ff.id.value.trim().length < 1) {
+			alert("아이디는 4글자 이상으로 입력하세요");
+			ff.id.focus();
+			return;
+		}
+
+		if (ff.pw.value.trim().length < 1) {
+			alert("패스워드는 4글자 이상으로 입력하세요");
+			ff.pw.focus();
+			return;
+		}
+		
+		ff.action="../LoginServlet";
+		ff.method="post";
+		ff.submit();
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+	<form>
+		ID : <input type="text" name="id"/><br/>
+		PW : <input type="password" name="pw"/><br/>
+		<input type="button" value="로그인" onclick="check_data(this.form)"/>		
+	</form>
+
+</body>
+</html>

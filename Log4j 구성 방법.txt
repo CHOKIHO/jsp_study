@@ -1,0 +1,29 @@
+1.  Log4j 구성 방법
+
+	1. 정의 
+		- Log4j를 프로에임웤에 추가 하는 방법 및 구성목록을 설정
+	2. 구성목록
+		1. log4j-1.2.15.jar
+		- log4j를 관리하는 API
+		- down url : https://logging.apache.org/log4j/2.x/download.html
+		2. log4j.xml
+		- log를 인쇄하는 format, 파일명 등 속성 관리
+
+	3. 파일 위치
+		1. log4j-1.2.15.jar
+		- path : /WebContent/WEB-INF/lib/
+		2. log4j.xml
+		- path : /WebContent/WEB-INF/resource/
+		- eclipse로 개발시 반드시  resource 폴더를  자원폴더로 추가 해야 된다.
+		그래서 log4j api에서 log4j.xml 파일을 찾아서 속성값들을 읽을 수 있다.
+	    - resource 추가
+
+        . Project > 오른쪽 마우스 > Properties
+          > Java Build Path > [Source] Tab >
+          > [Add Folder]를 해서 /WebContent/WEB-INF/resource/  를 추가 해야
+             log4j.xml 파일을 인식할 수 있다.
+             (참고, 이때 resource/폴더 밑으로 추가 폴더를 만들어서 log4j.xml 을 위치 시키면 안됨
+                    만약 이렇게 하고 싶으면  [Add Folder]버튼을 눌러서  최종폴더까지 추가 해야 됨)
+				
+   
+	

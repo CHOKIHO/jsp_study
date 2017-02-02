@@ -1,13 +1,14 @@
-
+﻿
 
 [JSP Study]
 
 1. 톰캣 포트 설정 
     1. 톰캣 (conf/server.xml) connector port 9090변경 
 
-2. 이클립스 환경설정
+2. 이클립스(EE) 환경설정
     1. 인코딩 (workspace, css, html, jsp files) ISO 10646/Unicode(UTF-8)
 	2. 서버지정 (preferences-server-runtime Environment-add : Apache Tomcat v8.0 설정)
+	3. dynamic web project 
 	
 3. javax.servlet
    Servlet < (abstract) GenericServlet < HttpServlet
@@ -52,6 +53,54 @@ HelloServlet 작성이 완료 되었다면, 배포서술자(DD=web.xml) 파일�
 		response.sendRedirect("이동할 페이지");
 		페이지 주소도 바뀌고 request도 바뀌게 되므로 reqeust의 attribute는 사용할 수 없다.
 
-   
+7.  DAO (mybatis) 연결 - 싱글턴패턴
+    1)mybatis, 오라클 라이브러리 추가 
+	    C:\mybatis_study\util\mybatis-3.4.2\mybatis-3.4.2
+		C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib
+	  WEB-INF/lib 복사 (Libraries-Web App Libraries에 자동 추가됨)
+	   
+		①SqlSessionFactory
+		②SqlSession
+		③ss.insert()
+		④ss.close()
+
+8. HttpSession 처리
+
+9. jsp
+	1)내부적으로는 서블릿을 변경됨 (변환 java 소스 확인하기)
+	C:\jsp_study\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\0202\org\apache\jsp\pm
+	
+	2)스크립트요소
+		①선언부(전역)        <%! %>
+		②스크립트릿(지역)    <%  %>
+		③출력(표현식)        <%= %>
+
+10.[ Log4j 구성 방법 ]
+
+	1. 정의 
+		- Log4j를 프로에임웤에 추가 하는 방법 및 구성목록을 설정
+	2. 구성목록
+		1. log4j-1.2.15.jar
+		- log4j를 관리하는 API
+		- down url : https://logging.apache.org/log4j/2.x/download.html
+		2. log4j.xml
+		- log를 인쇄하는 format, 파일명 등 속성 관리
+
+	3. 파일 위치
+		1. log4j-1.2.15.jar
+		- path : /WebContent/WEB-INF/lib/
+		2. log4j.xml
+		- path : /WebContent/WEB-INF/resource/
+		- eclipse로 개발시 반드시  resource 폴더를  자원폴더로 추가 해야 된다.
+		그래서 log4j api에서 log4j.xml 파일을 찾아서 속성값들을 읽을 수 있다.
+	    - resource 추가
+
+        . Project > 오른쪽 마우스 > Properties
+          > Java Build Path > [Source] Tab >
+          > [Add Folder]를 해서 /WebContent/WEB-INF/resource/  를 추가 해야
+             log4j.xml 파일을 인식할 수 있다.
+             (참고, 이때 resource/폴더 밑으로 추가 폴더를 만들어서 log4j.xml 을 위치 시키면 안됨
+                    만약 이렇게 하고 싶으면  [Add Folder]버튼을 눌러서  최종폴더까지 추가 해야 됨)
+				
    
 	
