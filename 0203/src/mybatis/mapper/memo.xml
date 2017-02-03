@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memo">
+  
+    <select id="all" resultType="mybatis.vo.MemoVO">
+    	select * from memo_t
+    	order by idx desc
+    </select>
+    
+    <insert id="add" parameterType="mybatis.vo.MemoVO">
+    	insert into memo_t (idx, title, content, pwd, writer, ip, wdt )
+    	 values ( memo_seq.nextval, #{title}, #{content}, #{pwd}, #{writer}, #{ip}, sysdate )
+    </insert>
+    
+</mapper>
+

@@ -1,4 +1,4 @@
-1.  Log4j 구성 방법
+1.  Log4j 구성 방법 (http://javada.tistory.com/25)
 
 	1. 정의 
 		- Log4j를 프로에임웤에 추가 하는 방법 및 구성목록을 설정
