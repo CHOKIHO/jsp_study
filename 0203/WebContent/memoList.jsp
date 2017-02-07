@@ -38,7 +38,7 @@
 </style>
 <script type="text/javascript">
 	function openWin(){
-		open("openWin.jsp","","width=600,height=300,top=200,left=300");
+		open("openWin2.jsp","","width=600,height=420,top=200,left=300");
 	}
 </script>
 </HEAD>

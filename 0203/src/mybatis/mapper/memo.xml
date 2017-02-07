@@ -11,6 +11,12 @@
     	insert into memo_t (idx, title, content, pwd, writer, ip, wdt )
     	 values ( memo_seq.nextval, #{title}, #{content}, #{pwd}, #{writer}, #{ip}, sysdate )
     </insert>
+
+    <insert id="add2" parameterType="mybatis.vo.MemoVO">
+    	insert into memo_t (idx, title, content, pwd, writer, ip, wdt, filename )
+    	 values ( memo_seq.nextval, #{title}, #{content}, #{pwd}, #{writer}, #{ip}, sysdate, #{filename} )
+    </insert>
+
     
 </mapper>
 

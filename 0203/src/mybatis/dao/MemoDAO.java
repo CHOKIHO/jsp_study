@@ -67,5 +67,26 @@ public class MemoDAO {
 		ss.close();		
 		return value;
 	}
+
+	public static boolean add2(String title, String content, String pwd, String writer, String ip, String filename) {
+
+		boolean value = false;
+		
+		MemoVO vo = new MemoVO(title, content, pwd, writer, ip, filename);
+		
+		SqlSession ss = factory.openSession(false);		
+		int cnt = ss.insert("memo.add2", vo);
+		
+		if (cnt ==1 ) {
+			value = true;
+			ss.commit();
+		} else {
+			ss.rollback();
+		}
+
+		ss.close();		
+		return value;
+	}
+
 	
 }

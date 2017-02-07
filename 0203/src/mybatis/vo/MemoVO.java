@@ -14,7 +14,15 @@ public class MemoVO {
   
 	 */
 
-	String idx, title, content, pwd, writer, ip, wdt;
+	String idx, title, content, pwd, writer, ip, wdt, filename;
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 
 	public MemoVO() {}
 	
@@ -25,6 +33,17 @@ public class MemoVO {
 		this.pwd = pwd;
 		this.writer = writer;
 		this.ip = ip;
+	}
+
+	
+	public MemoVO(String title, String content, String pwd, String writer, String ip, String filename) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.pwd = pwd;
+		this.writer = writer;
+		this.ip = ip;
+		this.filename = filename;
 	}
 
 	public String getIdx() {

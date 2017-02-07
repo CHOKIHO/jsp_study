@@ -74,3 +74,38 @@
 		②스크립트릿(지역)    <%  %>
 		③출력(표현식)        <%= %>
 
+10. 파일업로드 라이브러리 (com.oreilly.servlet)
+	1) http://www.servlets.com/cos/
+	2) cos-26Dec2008.zip
+	3) 파일첨부 form 
+	   ①encType="multipart/form-data" 정의
+	4) jsp   
+	   ①MultipartRequest객체를 사용
+	   ②파일저장위치가 필요함 (HttpSession 우회) 
+
+11. 파일 다운로드 
+	1)스트림선언
+		BufferedInputStream bis = null; (file I/O) 
+		InputStream fis = null;
+		
+		BufferedOutputStream bos = null;
+		ServletOutputStream fos = null; (response객체를 통한 스트림 응답)
+
+12. JSP 액션 요소
+	JSP 액션 요소는 요청 처리 단계에서 역할을한다. 
+	JSP 액션 요소는 XML 구문을 사용하여 작성됩니다.
+	
+	<jsp:useBean id="userInfo" class="com.mycompany.UserInfoBean" >
+		<jsp:setProperty name="userInfo" property="firstName" />
+	</jsp:useBean>
+	
+	<%
+		userInfo = new com.mycompany.UserInfoBean();
+	%>
+	<jsp:getProperty name="userInfo" property="firstName" />
+
+	
+	
+	
+	
+	

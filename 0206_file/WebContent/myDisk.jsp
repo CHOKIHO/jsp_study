@@ -127,6 +127,22 @@
 		display: none;
 	}
 	.dd{ text-align:center }
+
+	div#f_div{
+		position: absolute;
+		top: 100px;
+		left: 400px;
+		width: 550px;
+		height: 470px;
+		background-color:#ffffff;
+		border-radius: 10px;
+		border: 1px solid black;
+		padding: 10px;
+		padding-top: 30px;
+		text-align: center;
+		display: none;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -167,6 +183,14 @@
 		
 		f_div.style.display = "none";
 	}
+
+	//파일 만리기 div 숨기기 기능
+	function noView2(){
+		var f_div = document.getElementById("f_div");
+		
+		f_div.style.display = "none";
+	}
+
 	
 	//파일 다운로드 기능
 	function down(fname){
@@ -188,9 +212,21 @@
 			document.myForm.submit();
 		}
 	}
+	
+	//파일 만들기
+	function make() {
+		var f_div = document.getElementById("f_div");
+		f_div.style.display = "block";
+	}
+	
+	//
+	function check() {
+		alert("파일이 이미 존재합니다.");
+	}
+	
 </script>
 </head>
-<body>
+<body <% if (request.getParameter("chk") != null) { %> onload="chk()" <% } %>>
 	<h1>MyDisk Service</h1>
 	<table summary="사용량표시테이블" cellspacing="0" cellpadding="4">
 		<tbody>
@@ -213,7 +249,7 @@
 		<ul class="menu">
 			<li class="item"><a href="#" onclick="newFolder()">폴더만들기</a></li>
 			<li class="item"><a href="javascript:upload()">파일올리기</a></li>
-			<li class="item"><a href="#">파일만들기</a></li>
+			<li class="item"><a href="javascript:make()">파일만들기</a></li>
 		</ul>
 	<hr/>
 	
@@ -302,15 +338,31 @@
 	
 <!-- 파일올리기 기능의 팝업창 -->	
 	<div id="file_win">
-		<form action="upload.jsp" method="post" 
-		encType="multipart/form-data" name="ff">
-			<input type="hidden" name="cPath" value=" "/>
+		<form action="upload.jsp" method="post" encType="multipart/form-data" name="ff">
+			<input type="hidden" name="cPath" value="<%=cPath%>"/>
 			첨부파일:<input type="file" name="file"/><br/><br/>
 			<input type="submit" value="저 장"/>
-			<input type="button" value="취 소" 
-				onclick="noView()"/>
+			<input type="button" value="취 소" onclick="noView()"/>
 		</form>
 	</div>
+
+<!-- 파일만들기 기능의 팝업창 -->	
+	<div id="f_div">
+		<h2>파일만들기</h2>
+		<form action="newFile.jsp" method="post" name="ff">
+			<input type="hidden" name="cPath" value="<%=cPath%>"/>
+			파일명:<input type="text" name="f_name"/><br/><br/>
+			<select name="ext">
+				<option value=".txt">txt</option>
+				<option value=".html">html</option>
+				<option value=".css">css</option>
+			</select><br/>
+			<textarea rows="20" cols="60" name="content"></textarea><br/><br/>
+			<input type="submit" value="만들기"/>
+			<input type="button" value="취 소" onclick="noView2()"/>
+		</form>
+	</div>
+	
 </body>
 </html>
 <%
