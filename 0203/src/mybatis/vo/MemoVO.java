@@ -16,6 +16,7 @@ public class MemoVO {
 
 	String idx, title, content, pwd, writer, ip, wdt, filename;
 
+	
 	public String getFilename() {
 		return filename;
 	}

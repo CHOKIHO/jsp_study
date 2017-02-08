@@ -30,6 +30,5 @@
 	boolean flag = MemoDAO.add(" ", content, pwd, writer, ip);
 
 %>
-
 </body>
 </html>

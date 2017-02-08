@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+body{
+    margin: 0;
+    padding: 0;
+}
+#head{
+    margin: 0px;
+    padding: 30px;
+    height: 90px;
+    background-color: #2e2e2e;
+}
+
+ul#menu{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    font: 22px Arial;
+}
+ul#menu>li{
+    display: inline;
+    margin-left: 15px;
+}
+ul#menu>li>a{
+    color: #ffffff;
+    text-decoration: none;
+}
+ul#menu>li>a:hover{
+    color: #00bfff;
+    font-size: 24px;
+    border-bottom: 3px solid #00bfff;
+}
+ul#menu .select{
+    color:#ff8000;
+    font-size: 24px;
+    border-bottom: 4px solid #ff8000;
+}

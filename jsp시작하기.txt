@@ -48,7 +48,7 @@
 		페이지가 바뀌어도 reqeust는 바뀌지 않으므로 request에 attribute를 설정해서 
 		이동할 페이지로 값을 가져갈 수 있다. 
 
-	2)redirect
+	2) redirect
 		response.sendRedirect("이동할 페이지");
 		페이지 주소도 바뀌고 request도 바뀌게 되므로 reqeust의 attribute는 사용할 수 없다.
 
@@ -73,6 +73,8 @@
 		①선언부(전역)        <%! %>
 		②스크립트릿(지역)    <%  %>
 		③출력(표현식)        <%= %>
+		
+		<%@ 지시자
 
 10. 파일업로드 라이브러리 (com.oreilly.servlet)
 	1) http://www.servlets.com/cos/
@@ -91,21 +93,51 @@
 		BufferedOutputStream bos = null;
 		ServletOutputStream fos = null; (response객체를 통한 스트림 응답)
 
-12. JSP 액션 요소
-	JSP 액션 요소는 요청 처리 단계에서 역할을한다. 
+12. JSP 액션요소 (액션태그지원)
+	원래 html태그에는 없는 기능으로써 자바문법을 대신하는 jsp가 제공하는 태그들
+	
+	JSP 액션 요소는 요청 처리 단계에서 역할을 한다. 
 	JSP 액션 요소는 XML 구문을 사용하여 작성됩니다.
-	
-	<jsp:useBean id="userInfo" class="com.mycompany.UserInfoBean" >
-		<jsp:setProperty name="userInfo" property="firstName" />
-	</jsp:useBean>
-	
-	<%
-		userInfo = new com.mycompany.UserInfoBean();
-	%>
-	<jsp:getProperty name="userInfo" property="firstName" />
+	자바빈도 JSP 페이지에서 사용할 수 있는 기능을 제공하고, 
+	웹 브라우저에서 자바 애플릿을 실행시킬 수 있는 기능도 지원한다.
 
+	1) include page vs include file
+		<jsp:include page="ex1.jsp"/> : 각각 컴파일하여 결과만 merge, 메서드 공유불가
+		<jsp:param> 함께 사용
+		<%@include file="ex1.jsp"%> : 함께 컴파일, 메서드 공유 가능
+		(참고)http://devyongsik.tistory.com/92
 	
+	2) <jsp:forward>
+		<jsp:forward page="ex3_forward2.jsp"></jsp:forward>
+		request와 response를 포함하여 다음페이지로 전달
+		<jsp:param>태그와 함께 사용
+		(참고) sendRedirect는 이전 request와 response를 버리고 새로 생성함.	
+		
+	3) <jsp:useBean>
+		자바문법 new를 대신하는 액션태그 useBean이다.
+		<jsp:useBean> new 연산자를 대신함
+		<jsp:setProperty> setter를 대신함
+		<jsp:getProperty> getter를 대신함
+
+		<jsp:useBean id="userInfo" class="com.mycompany.UserInfoBean" scope="page">
+			<jsp:setProperty name="userInfo" property="firstName" />
+		</jsp:useBean
+
+		//모든 멤버변수 받을때	
+		<jsp:useBean id="vo" class="ex5.MemVO" scope="page">
+			<jsp:setProperty name="vo" property="*" />
+		</jsp:useBean>	
+
+		<%
+			userInfo = new com.mycompany.UserInfoBean();
+		%>
+		
+		<jsp:getProperty name="userInfo" property="firstName" />
 	
-	
-	
+13. JSP 모델
+	1) 모델1 : 스크립트 요소와 액션요소를 활용
+		jsp페이지내에 (control 요소와 model 요소가 혼합)	
+			
+	2) 모델2 : MVC 패턴 (모델1을 제한)
+		JSP(View)  -  요청(서블릿, Controller) - 객체(Bean, Model)
 	
